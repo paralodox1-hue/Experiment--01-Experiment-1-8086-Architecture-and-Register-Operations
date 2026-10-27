@@ -197,6 +197,9 @@ END
   VALUE2                       `2222H`           `1111H`
 
 ### Explanation
+This program exchanges the contents of two 16-bit memory locations, VALUE1 and VALUE2, using the AX and BX registers as temporary storage.
+
+Why registers are needed: The 8086 does not allow a MOV directly from one memory location to another. The values must first be loaded into registers, and then written back to the opposite locations.
 
   
 ------------------------------------------------------------------------
