@@ -139,6 +139,8 @@ END MAIN
 -   AX = `1234H`
 -   BX = `1234H`
 -   RESULT = `1234H`
+-   <img width="1302" height="685" alt="image" src="https://github.com/user-attachments/assets/21763e3c-fa38-45cb-9721-89d4442d11fa" />
+
 
 ### Explanation
 
@@ -146,6 +148,7 @@ END MAIN
 AX. `MOV RESULT, BX` stores the contents of BX in the 16-bit memory
 variable `RESULT`. The `MOV` instruction does not modify the source
 operand.
+
 
 ------------------------------------------------------------------------
 
@@ -165,7 +168,25 @@ Write an 8086 assembly language program to exchange the contents of two
 5.  Stop the program.
 
 ### Assembly Program
+.MODEL SMALL
+.STACK 100H
 
+.DATA
+    VALUE1 DW 1111H
+    VALUE2 DW 2222H
+
+.CODE
+    MOV AX, @DATA
+    MOV DS, AX
+
+    MOV AX, VALUE1      ; AX = 1111H
+    MOV BX, VALUE2      ; BX = 2222H
+    MOV VALUE1, BX      ; VALUE1 = 2222H
+    MOV VALUE2, AX      ; VALUE2 = 1111H
+
+    MOV AH, 4CH
+    INT 21H
+END
  
 
 ### Expected Result
@@ -191,6 +212,8 @@ Write an 8086 assembly language program to exchange the contents of two
 7.  Record the observed results and compare them with the expected
     results.
 ## Screenshot of the results 
+<img width="1314" height="687" alt="image" src="https://github.com/user-attachments/assets/170bffaa-6f20-4861-b503-75698b3f3660" />
+
 
 
 
